@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_login"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.rabitech.login.ui.fragment.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@+id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_resetPassword"
+            app:destination="@id/resetPassword" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeHostFragment"
+            app:destination="@id/homeHostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetPassword"
+        android:name="com.rabitech.login.ui.fragment.reset.ResetPassword"
+        android:label="ResetPassword"
+        tools:layout="@layout/fragment_reset_password"/>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.rabitech.login.ui.fragment.signup.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeHostFragment"
+        android:name="com.rabitech.login.ui.uiHost.HomeHostFragment"
+        android:label="HomeHostFragment"
+        tools:layout="@layout/fragment_home_host"/>
+</navigation>
