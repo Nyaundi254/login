@@ -42,6 +42,7 @@ class LoginFragment : Fragment() {
         )
 
         mAuth = FirebaseAuth.getInstance()
+        checkUserSession()
 
         binding.btnLogin.setOnClickListener {
             validateInputs()
@@ -58,6 +59,12 @@ class LoginFragment : Fragment() {
     }
 
 
+    private fun checkUserSession() {
+        if (mAuth.currentUser != null) {
+            findNavController().navigate(R.id.action_loginFragment_to_homeHostFragment)
+        }
+    }
+
     private fun validateInputs() {
         val userEmail = text_email.text.toString()
         val userPassword = text_pass.text.toString()
@@ -69,14 +76,14 @@ class LoginFragment : Fragment() {
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
-            text_email.error = "pleaese eneter valid email address"
+            text_email.error = "Pleaese eneter valid email address"
             text_email.requestFocus()
             return
         }
 
         if (userPassword.isEmpty()) {
-            text_password.error = " Please enter password"
-            text_password.requestFocus()
+            text_pass.error = "Please enter password"
+            text_pass.requestFocus()
             return
         }
 

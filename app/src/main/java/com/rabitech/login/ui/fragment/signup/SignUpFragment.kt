@@ -36,8 +36,6 @@ class SignUpFragment : Fragment() {
 
         mAuth = FirebaseAuth.getInstance()
 
-        checkUserSession()
-
         binding.buttonRegister.setOnClickListener {
             validateInputs()
         }
@@ -46,12 +44,6 @@ class SignUpFragment : Fragment() {
         )
 
         return binding.root
-    }
-
-    private fun checkUserSession() {
-        if (mAuth.currentUser !=null){
-            findNavController().navigate(R.id.action_loginFragment_to_homeHostFragment)
-        }
     }
 
     private fun validateInputs() {
